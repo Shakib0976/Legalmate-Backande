@@ -1,5 +1,7 @@
+import ApiError from "../../utils/AppError.js";
 import { User } from "./user.model.js";
 import bcrypt from "bcrypt";    
+import  httpStatus  from "http-status";
 
 const getAllUsersFromDB = async () => {
     const result = await User.find()
@@ -11,7 +13,7 @@ const createAUserInDB = async (payload: any) => {
         email: payload.email
     })
     if (existingUser) {
-        throw new Error("User with this email already exists");
+        throw new   ApiError(httpStatus.CONFLICT, "User with this email already exists");
     }
 
     if (payload.password) {
