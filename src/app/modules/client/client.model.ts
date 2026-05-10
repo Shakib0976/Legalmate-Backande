@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 import type { TClient } from "./client.interface.js";
 
 //    name : string,
@@ -14,6 +14,12 @@ const clientSchema = new Schema<TClient>({
         type: String,
         required: true
     },
+    user: {
+
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -24,15 +30,15 @@ const clientSchema = new Schema<TClient>({
     },
     address: {
         type: String,
-        required: true
+      
     },
     location: {
         type: String,
-        required: true
+       
     },
     occupation: {
         type: String,
-        required: true
+        
     },
     status: {
         type: String,

@@ -1,3 +1,4 @@
+import type { Types } from "mongoose";
 
 
 export type TExperience = {
@@ -46,6 +47,7 @@ export type TAvailability = {
 
 export type TLawyer = {
     name : string;
+    user: Types.ObjectId,
     email : string;
     // basic info   
     profileImage? : string;

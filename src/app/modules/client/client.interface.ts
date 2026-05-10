@@ -1,8 +1,10 @@
+import type { Types } from "mongoose";
 
 
 
 export interface TClient {
     name : string,
+    user: Types.ObjectId,
     email : string,
     address : string,
     image?: string,

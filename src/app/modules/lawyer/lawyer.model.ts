@@ -1,6 +1,6 @@
 
 
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import type { TAvailability, TEducation, TExperience, TLawyer, TLicense, TReview } from "./lawyer.interface.js";
 
 
@@ -162,6 +162,13 @@ const lawyerSchema = new Schema<TLawyer>(
       type: String,
       required: true,
       trim: true,
+    },
+    user: {
+
+      type: Types.ObjectId,
+
+      ref: "User",
+      required: true
     },
 
     email: {

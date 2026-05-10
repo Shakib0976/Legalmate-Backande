@@ -8,7 +8,7 @@ const getAllClientsFromDB = async() => {
 }
 
 const getSingleClientFromDB = async(id : string) => {
-    const result = await Client.findById(id , { isDeleted: false })
+    const result = await Client.findById(id , { isDeleted: false }).populate("user" )
     return result;
 }
 

@@ -1,4 +1,6 @@
 import ApiError from "../../utils/AppError.js";
+import { Client } from "../client/client.model.js";
+import { Lawyer } from "../lawyer/lawyer.model.js";
 import { User } from "./user.model.js";
 import bcrypt from "bcrypt";    
 import  httpStatus  from "http-status";
@@ -23,6 +25,20 @@ const createAUserInDB = async (payload: any) => {
     }
 
     const result = await User.create(payload);
+
+    const userData = {
+        name:payload.name,
+        email: payload.email,
+        user:result._id
+    }
+
+    if(payload.role === "client"){
+        await Client.create(userData);
+    }
+    else if(payload.role === "lawyer"){
+        await Lawyer.create(userData);
+    }
+
     return result;
 }
 
