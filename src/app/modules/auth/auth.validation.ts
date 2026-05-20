@@ -7,3 +7,8 @@ const loginValidationSchema = z.object({
         password : z.string({message: "Password is required"}).min(6).max(20),
     })
 })
+
+
+export const authValidation = {
+    loginValidationSchema
+}
